@@ -1,0 +1,6 @@
+REBELDES
+
+0 - Rebelde(nome=willy, raca=HUMANO, idade=25)
+1 - Rebelde(nome=Willian, raca=GREE, idade=27)
+2 - Rebelde(nome=Julia, raca=GREE, idade=21)
+3 - Rebelde(nome=Caio, raca=RAKATA, idade=20)
