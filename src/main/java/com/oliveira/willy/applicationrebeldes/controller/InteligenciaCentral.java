@@ -10,12 +10,13 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 @NoArgsConstructor
 public class InteligenciaCentral {
-    private List<Rebelde> rebeldes = new ArrayList<>();
+    private LinkedList<Rebelde> rebeldes = new LinkedList<>();
 
 
     public void cadastrarRebelde(Rebelde rebelde) {

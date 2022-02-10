@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -12,41 +13,41 @@ import java.util.List;
 public class MergeSort {
     private ParametroOrdenacao parametroOrdenacao;
 
-    private List<Rebelde> merge(List<Rebelde> esquerda, List<Rebelde> direita) {
-        ArrayList<Rebelde> arrayAuxiliar = new ArrayList<>();
+    private LinkedList<Rebelde> merge(LinkedList<Rebelde> esquerda, LinkedList<Rebelde> direita) {
+        LinkedList<Rebelde> arrayAuxiliar = new LinkedList<>();
         int esquerdaSize = esquerda.size();
         int direitaSize = direita.size();
 
         switch (parametroOrdenacao) {
             case NOME:
                 while (esquerdaSize != 0 && direitaSize != 0) {
-                    if (esquerda.get(0).getNome().compareTo(direita.get(0).getNome()) < 0) {
-                        arrayAuxiliar.add(esquerda.remove(0));
+                    if (esquerda.peek().getNome().compareTo(direita.peek().getNome()) < 0) {
+                        arrayAuxiliar.add(esquerda.poll());
                         esquerdaSize--;
                     } else {
-                        arrayAuxiliar.add(direita.remove(0));
+                        arrayAuxiliar.add(direita.poll());
                         direitaSize--;
                     }
                 }
                 break;
             case IDADE:
                 while (esquerdaSize != 0 && direitaSize != 0) {
-                    if (esquerda.get(0).getIdade() < direita.get(0).getIdade()) {
-                        arrayAuxiliar.add(esquerda.remove(0));
+                    if (esquerda.peek().getIdade() < direita.peek().getIdade()) {
+                        arrayAuxiliar.add(esquerda.poll());
                         esquerdaSize--;
                     } else {
-                        arrayAuxiliar.add(direita.remove(0));
+                        arrayAuxiliar.add(direita.poll());
                         direitaSize--;
                     }
                 }
                 break;
             case RACA:
                 while (esquerdaSize != 0 && direitaSize != 0) {
-                    if (esquerda.get(0).getRaca().compareTo(direita.get(0).getRaca()) < 0) {
-                        arrayAuxiliar.add(esquerda.remove(0));
+                    if (esquerda.peek().getRaca().compareTo(direita.peek().getRaca()) < 0) {
+                        arrayAuxiliar.add(esquerda.poll());
                         esquerdaSize--;
                     } else {
-                        arrayAuxiliar.add(direita.remove(0));
+                        arrayAuxiliar.add(direita.poll());
                         direitaSize--;
                     }
                 }
@@ -63,7 +64,7 @@ public class MergeSort {
         return  arrayAuxiliar;
     }
 
-    public List<Rebelde> mergeSort(List<Rebelde> rebeldes) {
+    public LinkedList<Rebelde> mergeSort(LinkedList<Rebelde> rebeldes) {
 
         if (rebeldes == null) {
             return rebeldes;
@@ -75,8 +76,8 @@ public class MergeSort {
 
         int metadeLista = (int) Math.floor(rebeldes.size() / 2);
 
-        List<Rebelde> metadeEsquerda = new ArrayList<>(rebeldes.subList(0, metadeLista));
-        List<Rebelde> metadeDireita = new ArrayList<>(rebeldes.subList(metadeLista, rebeldes.size()));
+        LinkedList<Rebelde> metadeEsquerda = new LinkedList<>(rebeldes.subList(0, metadeLista));
+        LinkedList<Rebelde> metadeDireita = new LinkedList<>(rebeldes.subList(metadeLista, rebeldes.size()));
         return merge(mergeSort(metadeEsquerda), mergeSort(metadeDireita));
     }
 
